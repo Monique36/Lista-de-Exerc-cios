@@ -50,8 +50,16 @@ class Carro:
         else:
             print("Não é possível desacelerar, o carro está desligado.")
 
-# Criando uma instância da classe Carro
-meu_carro = Carro(cor="preto", modelo="Sedan")
+# Solicita ao usuário a inserção da cor e modelo do carro
+cor_carro = input("Digite a cor do carro: ")
+modelo_carro = input("Digite o modelo do carro: ")
+
+# Criando uma instância da classe Carro com os dados inseridos pelo usuário
+meu_carro = Carro(cor=cor_carro, modelo=modelo_carro)
+
+# Exibe a cor e modelo do carro criado
+print(f"\nCor do carro: {meu_carro.cor}")
+print(f"Modelo do carro: {meu_carro.modelo}\n")
 
 # Ligar o carro
 meu_carro.liga()
@@ -64,4 +72,5 @@ meu_carro.desacelera(20)
 
 # Parar o carro
 meu_carro.desliga()
+
 
