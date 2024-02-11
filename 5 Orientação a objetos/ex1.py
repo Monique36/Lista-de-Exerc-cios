@@ -7,6 +7,9 @@
 #6. Faça o carro "parar" utilizando os métodos da sua classe.
 
 
+import random  # Importa o módulo random
+import time  # Importa a biblioteca time
+
 class Carro:
     def __init__(self, cor, modelo):
         # Método construtor que inicializa os atributos do carro
@@ -64,13 +67,21 @@ print(f"Modelo do carro: {meu_carro.modelo}\n")
 # Ligar o carro
 meu_carro.liga()
 
-# Acelerar o carro
-meu_carro.acelera(50)
+# Acelerar o carro com uma velocidade aleatória entre 0 e 100 km/h
+velocidade = random.randint(0, 100)
+meu_carro.acelera(velocidade)
 
-# Desacelerar o carro
-meu_carro.desacelera(20)
+# Aguardar 1 segundo antes de desacelerar o carro
+time.sleep(1)
+
+# Desacelerar o carro com uma velocidade aleatória entre 0 e 50 km/h
+velocidade = random.randint(0, 50)
+meu_carro.desacelera(velocidade)
 
 # Parar o carro
 meu_carro.desliga()
+
+
+
 
 
