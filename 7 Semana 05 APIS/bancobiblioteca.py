@@ -49,6 +49,13 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Emprestimos (
                     FOREIGN KEY (usuario_id) REFERENCES Usuarios(usuario_id)
                 )''')
 
+cursor.execute('''CREATE TABLE IF NOT EXISTS AutoresLivros (
+                    autor_id INTEGER,
+                    livro_id INTEGER,
+                    FOREIGN KEY (autor_id) REFERENCES Autores(autor_id),
+                    FOREIGN KEY (livro_id) REFERENCES Livros(livro_id)
+                )''')
+
 # Inserindo dados de exemplo
 cursor.executemany('''INSERT INTO Autores (nome) VALUES (?)''', [('Stephen King',), ('J.K. Rowling',), ('George Orwell',)])
 cursor.executemany('''INSERT INTO Editoras (nome) VALUES (?)''', [('Editora A',), ('Editora B',), ('Editora C',)])
@@ -111,8 +118,7 @@ print("\nEmpréstimos em atraso:")
 for row in cursor.fetchall():
     print(row)
 
-    # Definição das funções anteriores (criar_banco_dados(), inserir_dados_exemplo(), consultar(), main())
-
+# Funções adicionadas
 def marcar_livro_devolvido(livro_id):
     conn = sqlite3.connect('biblioteca.db')
     cursor = conn.cursor()
@@ -138,10 +144,6 @@ def remover_autor(nome_autor):
 
 # Função para consultar e gerenciar o sistema
 def main():
-    criar_banco_dados()
-    inserir_dados_exemplo()
-    consultar()
-
     # Exemplos de utilização das novas funções
     marcar_livro_devolvido(1)
     remover_autor('Stephen King')
@@ -151,6 +153,8 @@ if __name__ == "__main__":
 
 # Fechando a conexão
 conn.close()
+
+
 
 
 
