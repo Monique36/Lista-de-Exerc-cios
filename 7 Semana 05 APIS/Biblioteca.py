@@ -88,7 +88,8 @@ class Autor(Pessoa):
         self.obras_publicadas = obras_publicadas
 
     def informacao_pessoa(self):  # Método implementado para a classe abstrata Pessoa
-        print(f"Autor: {self.nome}, Telefone: {self.telefone}, Nacionalidade: {self.nacionalidade}, Obras Publicadas: {self.obras_publicadas}")
+       print("Autor: {}, Telefone: {}, Nacionalidade: {}, Obras Publicadas: {}".format(self.nome, self.telefone, self.nacionalidade, self.obras_publicadas))
+
 
 class Usuario(Pessoa):
     def __init__(self, nome, telefone, nacionalidade, data_inscricao):
@@ -96,40 +97,7 @@ class Usuario(Pessoa):
         self.data_inscricao = data_inscricao
 
     def informacao_pessoa(self):  # Método implementado para a classe abstrata Pessoa
-        print(f"Usuário: {self.nome}, Telefone: {self.telefone}, Nacionalidade: {self.nacionalidade}, Data de Inscrição: {self.data_inscricao}")
+        print("Autor: " + self.nome + ", Telefone: " + self.telefone + ", Nacionalidade: " + self.nacionalidade + ", Obras Publicadas: " + self.obras_publicadas)
 
 
-if __name__ == "__main__":
-    # Criando uma biblioteca
-    biblioteca = Biblioteca()
 
-    # Adicionando usuários
-    usuario1 = Usuario("João", "123456789", "Brasil", "01/01/2024")
-    usuario2 = Usuario("Maria", "987654321", "Brasil", "01/01/2024")
-    biblioteca.adicionar_usuario(usuario1)
-    biblioteca.adicionar_usuario(usuario2)
-
-    # Adicionando livros
-    livro1 = Livro("Python for Beginners", "Editora A", ["Programação", "Python"], 5, 2)
-    livro2 = Livro("Data Science Handbook", "Editora B", ["Data Science", "Python"], 3)
-    biblioteca.adicionar_livro(livro1)
-    biblioteca.adicionar_livro(livro2)
-
-    # Realizando empréstimos
-    biblioteca.emprestar_exemplar(Exemplar(livro1), usuario1, "01/02/2024", "01/03/2024")
-    biblioteca.emprestar_exemplar(Exemplar(livro2), usuario2, "01/02/2024", "01/03/2024")
-
-    # Devolvendo exemplares
-    biblioteca.devolver_exemplar(Exemplar(livro1))
-
-    # Exibindo informações dos usuários
-    for usuario in biblioteca.usuarios:
-        usuario.informacao_pessoa()
-
-    # Exibindo informações dos livros
-    for livro in biblioteca.livros:
-        print(f"Título: {livro.titulo}, Editora: {livro.editora}, Gêneros: {livro.generos}, Exemplares Disponíveis: {livro.exemplares_disponiveis}")
-
-    # Exibindo informações dos empréstimos
-    for emprestimo in biblioteca.emprestimos:
-        print(f"Exemplar: {emprestimo.exemplar.livro.titulo}, Usuário: {emprestimo.usuario.nome}, Data de Empréstimo: {emprestimo.data_emprestimo}, Data de Devolução: {emprestimo.data_devolucao}")
